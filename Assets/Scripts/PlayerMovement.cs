@@ -5,20 +5,28 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
+    public float playerSpeed = 5f;
 
     Animator m_Animator;
-    Rigidbody m_Rigidbody;
+    CharacterController m_CharacterController;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
     void Start()
     {
         m_Animator = GetComponent<Animator>();
-        m_Rigidbody = GetComponent<Rigidbody>();
+        m_CharacterController = GetComponent<CharacterController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        // Gravity
+        //if (m_CharacterController.isGrounded == false)
+        //{
+        //Add our gravity Vector
+        m_CharacterController.Move(new Vector3(0, -1, 0));
+        //}
+
         // Get basic movement input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -55,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * 0.02f);
-        m_Rigidbody.MoveRotation(m_Rotation);
+        m_CharacterController.Move(m_Movement * Time.deltaTime * playerSpeed);
+        transform.rotation = m_Rotation;
     }
 }
