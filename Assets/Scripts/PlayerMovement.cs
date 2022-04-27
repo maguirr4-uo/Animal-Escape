@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
+    private bool isAttacking;
+
     void Start()
     {
         m_Animator = GetComponent<Animator>();
@@ -21,11 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Gravity
-        //if (m_CharacterController.isGrounded == false)
-        //{
-        //Add our gravity Vector
         m_CharacterController.Move(new Vector3(0, -1, 0));
-        //}
 
         // Get basic movement input
         float horizontal = Input.GetAxis("Horizontal");
@@ -43,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
         m_Rotation = Quaternion.LookRotation(desiredForward);
 
         // Check if player is attacking
-        bool isAttacking;
         
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -56,14 +53,26 @@ public class PlayerMovement : MonoBehaviour
             isAttacking = false;
             m_Animator.SetBool("isAttacking", isAttacking);
         }
-
-        // TODO: Need to interact with human when attacking animation is playing, so that
-        // human can be attacked.
     }
 
     void OnAnimatorMove()
     {
         m_CharacterController.Move(m_Movement * Time.deltaTime * playerSpeed);
         transform.rotation = m_Rotation;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Check for collision with a human
+        if(hit.gameObject.tag == "Human")
+        {
+            Animator f_Animator = hit.gameObject.GetComponent<Animator>();
+
+            // Check if collision happened while attacking
+            if (isAttacking)
+            {
+                f_Animator.SetBool("isDying", true);
+            }
+        }
     }
 }
