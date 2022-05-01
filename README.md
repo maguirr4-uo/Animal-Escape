@@ -26,4 +26,6 @@ The hostile character is a Farmer girl
 
 WASD and Arrows: Move
 
+Mouse: Camera control
+
 Enter: Attack
