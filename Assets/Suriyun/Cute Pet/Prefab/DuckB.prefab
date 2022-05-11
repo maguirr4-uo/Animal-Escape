@@ -235,7 +235,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4856647853830708}
   - component: {fileID: 95977287038958530}
-  - component: {fileID: 3639143697648794262}
   - component: {fileID: 2595424161797048519}
   m_Layer: 0
   m_Name: DuckB
@@ -281,20 +280,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3639143697648794262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873322910081630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bdfc35e5fdc48d4ba483ecf9a73c5f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 20
-  playerSpeed: 2
 --- !u!143 &2595424161797048519
 CharacterController:
   m_ObjectHideFlags: 0
@@ -312,7 +297,7 @@ CharacterController:
   m_StepOffset: 0.05
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.09, z: 0.025}
+  m_Center: {x: 0, y: 0.08, z: 0.025}
 --- !u!1 &1946160812992088
 GameObject:
   m_ObjectHideFlags: 0
