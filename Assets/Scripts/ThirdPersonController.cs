@@ -372,8 +372,7 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool("isAttacking", false);
-
+                //_animator.SetBool("isAttacking", false);
 
                 // Attack
                 if (_input.attack)
@@ -381,13 +380,8 @@ namespace StarterAssets
                     // make sure that attacking reduce health and attack the human
 
                     isAttacking = true;
-
-                    //if (_hasAnimator)
-                    //{
                     _animator.SetBool("isIdle", false);
                     _animator.SetBool("isAttacking", true);
-                    //}
-                    _input.attack = false;
                 }
 
                 if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
@@ -395,6 +389,8 @@ namespace StarterAssets
                     isAttacking = false;
                     _animator.SetBool("isAttacking", false);
                     _animator.SetBool("isIdle", true);
+
+                    _input.attack = false;
                 }
             }
         }

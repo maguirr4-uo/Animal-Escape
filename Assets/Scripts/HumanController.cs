@@ -8,10 +8,10 @@ public class HumanController : MonoBehaviour {
 	Transform target;
 	Animator m_Animator;
 	public float visionRange;
-	
+	public bool isDying;
+
 	private bool isInRange;
 	private bool isWalking;
-    private bool isDying;
     // private int isAttacking;
 	private bool _hasAnimator;
 
@@ -39,6 +39,7 @@ public class HumanController : MonoBehaviour {
     private void FixedUpdate()
     {
 		// Check if hit
+		
 		if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Die1"))
 			isDying = true;
 
