@@ -391,9 +391,9 @@ namespace StarterAssets
                     isAttacking = false;
                     _animator.SetBool("isAttacking", false);
                     _animator.SetBool("isIdle", true);
-
-                    _input.attack = false;
                 }
+
+                _input.attack = false;
             }
         }
 
