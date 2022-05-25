@@ -946,15 +946,14 @@ MonoBehaviour:
   m_text: 'Instructions:
 
 
-    Movement: WASD/Arrows
-
+    Movement: WASD
 
     Camera: Mouse
 
+    Jump: Spacebar
 
-    Jump:
-    Spacebar
-
+    Sprint/Dash:
+    Shift (Hold)
 
     Attack: Mouse Click'
   m_isRightToLeft: 0
