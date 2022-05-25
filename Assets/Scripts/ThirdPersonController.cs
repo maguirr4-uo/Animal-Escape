@@ -82,6 +82,9 @@ namespace StarterAssets
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
 
+        // audio
+        AudioSource attackSound;
+
         // player
         private float _speed;
         private float _animationBlend;
@@ -143,11 +146,12 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
             #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
                         _playerInput = GetComponent<PlayerInput>();
-            #else
+#else
                         Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-            #endif
+#endif
 
-            //AssignAnimationIDs();
+            // Initialize sound
+            attackSound = GetComponent<AudioSource>();
 
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
@@ -167,15 +171,6 @@ namespace StarterAssets
         private void LateUpdate()
         {
             CameraRotation();
-        }
-
-        private void AssignAnimationIDs()
-        {
-            //isIdle = Animator.StringToHash("isIdle");
-            //isRunning = Animator.StringToHash("isRunning");
-            //isAttacking = Animator.StringToHash("isAttacking");
-            //isJumping = Animator.StringToHash("isJumping");
-            // Add damaged later
         }
 
         private void GroundedCheck()
@@ -379,6 +374,13 @@ namespace StarterAssets
                 {
                     // make sure that attacking reduce health and attack the human
 
+                    // Play sound
+                    if(!attackSound.isPlaying)
+                    {
+                        attackSound.time = 0.25f;
+                        attackSound.Play();
+                    }
+
                     isAttacking = true;
                     _animator.SetBool("isIdle", false);
                     _animator.SetBool("isAttacking", true);
@@ -397,16 +399,11 @@ namespace StarterAssets
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            // Check for collision with a human
-            if (hit.gameObject.tag == "Human")
-            {
+            // Check for collision with a human when attacking
+            if (hit.gameObject.tag == "Human" && isAttacking)
+            {               
                 Animator f_Animator = hit.gameObject.GetComponent<Animator>();
-
-                // Check if collision happened while attacking
-                if (isAttacking)
-                {
-                    f_Animator.SetBool("isDying", true);
-                }
+                f_Animator.SetBool("isDying", true);
             }
         }
 
