@@ -353,7 +353,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2410986, y: 1}
+    m_SensorSize: {x: 2.2533062, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -824,6 +824,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672804128857995805, guid: 7e90d65ec938edf47adfe0e3fa537aa7,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672804128857995805, guid: 7e90d65ec938edf47adfe0e3fa537aa7,
+        type: 3}
+      propertyPath: SprintSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6672804128857995805, guid: 7e90d65ec938edf47adfe0e3fa537aa7,
         type: 3}
