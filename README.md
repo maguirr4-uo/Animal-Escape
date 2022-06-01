@@ -14,18 +14,23 @@ Animal Escape is a TPS Survival game where a user picked animal has to survive s
 
 ## Maps
 
-The player can currently play only on a Farm map.
+There are three maps for the player to choose: Farm, Town/City, and Forest.
+At this time, Farm is the most fleshed out.
 
 ## Characters
 
 The player can currently play only as a Duck.
 
-The hostile character is a Farmer girl
+The hostile charactes are Farmer girls
 
-## Controls (Subject to change)
+## Controls 
 
 WASD and Arrows: Move
 
 Mouse click: Attack
 
 Mouse: Camera
+
+Shift: Sprint
+
+Spacebar: Jump
