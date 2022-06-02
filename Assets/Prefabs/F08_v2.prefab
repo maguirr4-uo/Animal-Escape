@@ -6843,7 +6843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20dcc10d6764a40998bd296d8da9ec0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 0
+  visionRange: 20
   isDying: 0
 --- !u!195 &142031349966987348
 NavMeshAgent:
