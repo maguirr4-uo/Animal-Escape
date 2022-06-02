@@ -56,7 +56,7 @@ public class HumanController : MonoBehaviour {
 		{
 			if (isInRange && !isDying)
 			{
-				Vector3 targetPosition = new Vector3(target.position.x, 0, target.position.z);
+				Vector3 targetPosition = new Vector3(target.position.x, target.position.y, target.position.z);
 				if (_hasAnimator)
 				{
 					m_Animator.SetBool("isWalking", true);
