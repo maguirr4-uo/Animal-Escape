@@ -16,7 +16,7 @@ public class LoadCharacter : MonoBehaviour
     void Start()
     {
         int selection = PlayerPrefs.GetInt("selectedAnimal");
-        GameObject playerChar = characters[1];
+        GameObject playerChar = characters[0];
         GameObject playerInstance = Instantiate(playerChar, spawn.position, Quaternion.identity);
 
         playerInstance.tag = "Player";
