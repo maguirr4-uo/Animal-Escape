@@ -17,7 +17,7 @@ public class HumanController : MonoBehaviour {
 
 	void Start () {
 		pathfinder = GetComponent<UnityEngine.AI.NavMeshAgent> ();
-		target = GameObject.FindGameObjectWithTag ("Player").transform;
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 		m_Animator = GetComponent<Animator>();
 		StartCoroutine (UpdatePath ());
 	}
