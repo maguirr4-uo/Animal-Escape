@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("MapSelection");
+        SceneManager.LoadScene("CharacterSelect");
     }
 
     public void FarmLoad()
