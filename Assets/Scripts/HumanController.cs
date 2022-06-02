@@ -50,7 +50,7 @@ public class HumanController : MonoBehaviour {
 	}
 
     IEnumerator UpdatePath() {
-		float refreshRate = 1f;
+		float refreshRate = 0.5f;
 
 		while (target != null)
 		{

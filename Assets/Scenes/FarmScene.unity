@@ -986,8 +986,8 @@ GameObject:
   m_Component:
   - component: {fileID: 816522088}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: PlayerPosTracker
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49517,6 +49517,7 @@ MonoBehaviour:
   - {fileID: 1101820015546773904, guid: 7e90d65ec938edf47adfe0e3fa537aa7, type: 3}
   - {fileID: 3511490105707213222, guid: 0f47f4c96d99f3e49bc9522f356e1b47, type: 3}
   spawn: {fileID: 243773715}
+  player: {fileID: 816522087}
   cameraRoot: {fileID: 1473352965}
 --- !u!4 &1673664648
 Transform:
