@@ -85,6 +85,10 @@ namespace StarterAssets
         // audio
         AudioSource attackSound;
 
+        // paused
+
+        PauseMenu pause;
+
         // player
         private float _speed;
         private float _animationBlend;
@@ -139,6 +143,13 @@ namespace StarterAssets
 
         private void Start()
         {
+            // Lock cursor for ease of play
+            Cursor.lockState = CursorLockMode.Locked;
+
+            // Check paused state (To disable attack if so)
+            pause = GameObject.Find("Canvas").GetComponent<PauseMenu>();
+
+            // Get components
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             _animator = GetComponent<Animator>();
             _hasAnimator = TryGetComponent(out _animator);
@@ -194,6 +205,10 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
+            // Don't move if paused
+            if (pause.isPaused)
+                return;
+
             // if there is an input and camera position is not fixed
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
@@ -215,6 +230,10 @@ namespace StarterAssets
 
         private void Move()
         {
+            // Don't move if paused
+            if (pause.isPaused)
+                return;
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -294,6 +313,13 @@ namespace StarterAssets
 
         private void JumpAndGravity()
         {
+            // Don't jump if paused, nor afterwards if button was pressed
+            if (pause.isPaused)
+            {
+                _input.jump = false;
+                return;
+            }
+
             // Jump
             if (_input.jump && _jumpTimeoutDelta <= 0.0f)
             {
@@ -369,10 +395,8 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                //_animator.SetBool("isAttacking", false);
-
                 // Attack
-                if (_input.attack)
+                if (_input.attack && !pause.isPaused)
                 {
                     // make sure that attacking reduce health and attack the human
 
