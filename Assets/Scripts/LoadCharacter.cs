@@ -33,7 +33,9 @@ public class LoadCharacter : MonoBehaviour
 
     // Text
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI scoreText;
 
+    int score = 0;
 
     void Start()
     {
@@ -52,13 +54,14 @@ public class LoadCharacter : MonoBehaviour
         waveCount = 1;
         tarHumanCount = waveCount * 5;
 
-        waveText.
         StartCoroutine(DisplayTransitionText());
     }
 
     private void Update()
     {
         ManageWave();
+
+        scoreText.text = "Score: " + score.ToString();
     }
 
     private void ManageWave()
@@ -92,6 +95,7 @@ public class LoadCharacter : MonoBehaviour
             if(humansDown == tarHumanCount)
             {
                 waveCleared = true;
+                score += humansDown * 100;
                 humansDown = 0;
             }
     }
