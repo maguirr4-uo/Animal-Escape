@@ -2014,6 +2014,10 @@ MonoBehaviour:
   characters:
   - {fileID: 1101820015546773904, guid: 7e90d65ec938edf47adfe0e3fa537aa7, type: 3}
   - {fileID: 3511490105707213222, guid: 0f47f4c96d99f3e49bc9522f356e1b47, type: 3}
+  FarmerTypes:
+  - {fileID: 3532105131903179134, guid: 66ebf1d84edb646a7a48d4425b6ba71a, type: 3}
+  - {fileID: 143743591542991879, guid: a5a076c2fe6c4419e941f518f451c91b, type: 3}
+  - {fileID: 8150997654989587057, guid: 394ee071bfa8643f6b5a026ed8fe9afd, type: 3}
   spawn: {fileID: 1388057262}
   player: {fileID: 1044221041}
   cameraRoot: {fileID: 1414259382}
