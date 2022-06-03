@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
+using TMPro;
 
 
 public class LoadCharacter : MonoBehaviour
@@ -15,16 +16,24 @@ public class LoadCharacter : MonoBehaviour
     public GameObject player;
     public GameObject cameraRoot;
 
+    public GameObject self;
+
     // Farmer Spawn management
     private float time;
-    private float interval;
+    private float interval = 1.0f;
     private Vector3 farmerSpawnPos;
 
     // Wave Management
-    //private int waveCount = 0;
-    //private bool waveCleared = false;
-    //private int curHumanCount = 0;
-    //private int tarHumanCount = 0;
+    private int waveCount = 0;
+    private bool waveCleared = false;
+    private int curHumanCount = 0;
+    private int tarHumanCount = 0;
+
+    public int humansDown = 0;
+
+    // Text
+    public TextMeshProUGUI waveText;
+
 
     void Start()
     {
@@ -40,56 +49,65 @@ public class LoadCharacter : MonoBehaviour
         cameraRoot.transform.parent = playerInstance.transform;
         playerInstance.GetComponent<ThirdPersonController>().CinemachineCameraTarget = cameraRoot;
 
-        //waveCount = 1;
-        //tarHumanCount = waveCount * 5;
+        waveCount = 1;
+        tarHumanCount = waveCount * 5;
+
+        waveText.
+        StartCoroutine(DisplayTransitionText());
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         ManageWave();
     }
 
     private void ManageWave()
-    {
-        /*
+    {        
         if (waveCleared)
         {
             // Load text that tells player they cleared wave for 3 secs
             waveCount++;
-            interval = 10.0f;
+
+            StartCoroutine(DisplayTransitionText());
+
             // Load text that tells player new wave is starting
             curHumanCount = 0;
             tarHumanCount = waveCount * 5;
+
+            waveCleared = false;
         }
-        else
-            interval = 1.0f;
-        */
-
-        interval = 4.0f;
-
-        //while(curHumanCount < tarHumanCount)
-        //{
-            // Load farmers randomly
-            time += Time.deltaTime;
-            while (time >= interval)
+        else        
+            while(curHumanCount < tarHumanCount)
             {
-                LoadFarmer();
-                time -= interval;
+                // Load farmers randomly
+                time += Time.deltaTime;
+                while (time >= interval)
+                {
+                    LoadFarmer();
+                    time -= interval;
+                }
             }
-        //}
+
+            // Check if all humans are dead
+            if(humansDown == tarHumanCount)
+            {
+                waveCleared = true;
+                humansDown = 0;
+            }
     }
 
    private void LoadFarmer()
    {
-        bool hit = RandomNavmeshLocation(player.transform.position, 20.0f, out farmerSpawnPos);
+        bool hit = RandomNavmeshLocation(player.transform.position, 25.0f, out farmerSpawnPos);
 
         if(hit)
         {
             int type = Random.Range(0, 3);
             GameObject FarmerInstance = Instantiate(FarmerTypes[type], farmerSpawnPos, Quaternion.identity);
-        }
 
-        //tarHumanCount++;
+            FarmerInstance.GetComponent<HumanController>().gameManager = self;
+            curHumanCount++;
+        }
    }
 
     // Following function from
@@ -109,6 +127,15 @@ public class LoadCharacter : MonoBehaviour
         }
         result = Vector3.zero;
         return false;
+    }
+
+
+    IEnumerator DisplayTransitionText()
+    {
+        // Displays the text between waves
+        waveText.text = "Wave " + waveCount.ToString() + "!";
+        yield return new WaitForSeconds(5);
+        waveText.text = "";
     }
 
 }

@@ -20,7 +20,13 @@ public class HumanController : MonoBehaviour {
     // private int isAttacking;
 	private bool _hasAnimator;
 
+	public GameObject gameManager;
+	LoadCharacter waveManager;
+
 	void Start () {
+
+		waveManager = gameManager.GetComponent<LoadCharacter>();
+
 		pathfinder = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		m_Animator = GetComponent<Animator>();
@@ -62,6 +68,7 @@ public class HumanController : MonoBehaviour {
 		if (isDying && m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
 		{
 			Destroy(gameObject);
+			waveManager.humansDown++;
 		}
 	}
 
