@@ -163,18 +163,12 @@ MonoBehaviour:
   FootstepAudioClips: []
   FootstepAudioVolume: 0.5
   JumpHeight: 2
-  Gravity: -15
+  Gravity: -9.8
   JumpTimeout: 0.5
   FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.2
-  GroundedRadius: 0.3
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 1
   CinemachineCameraTarget: {fileID: 0}
   TopClamp: 70
-  BottomClamp: -30
+  BottomClamp: 5
   CameraAngleOverride: 0
   LockCameraPosition: 0
 --- !u!114 &4843104562957741930
