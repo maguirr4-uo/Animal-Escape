@@ -7,8 +7,13 @@ public class HumanController : MonoBehaviour {
 	UnityEngine.AI.NavMeshAgent pathfinder;
 	Transform target;
 	Animator m_Animator;
+	AudioSource dyingSound;
+
 	public float visionRange;
 	public bool isDying;
+
+	// Sound
+	private bool sfxPlayed = false;
 
 	private bool isInRange;
 	private bool isWalking;
@@ -19,6 +24,8 @@ public class HumanController : MonoBehaviour {
 		pathfinder = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		m_Animator = GetComponent<Animator>();
+		dyingSound = GetComponent<AudioSource>();
+
 		StartCoroutine (UpdatePath ());
 	}
 
@@ -41,7 +48,16 @@ public class HumanController : MonoBehaviour {
 		// Check if hit
 		
 		if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Die1"))
+        {
 			isDying = true;
+
+			if (!sfxPlayed)
+			{
+				dyingSound.time = 0.1f;
+				dyingSound.Play();
+				sfxPlayed = true;
+			}
+		}
 
 		if (isDying && m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
 		{
