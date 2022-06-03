@@ -10,16 +10,17 @@ Max Aguirre: Product Owner
 
 ## About the Game
 
-Animal Escape is a TPS Survival game where a user picked animal has to survive several waves of humans. The number of humans that the animal is fighting increases with each level until the user gets captured, and as the levels increase the player will begin to fight different types of humans. 
+Animal Escape is a TPS Survival game where a user picked animal has to defeat several waves of humans. The number of humans that the animal is fighting increases with each level.
+
+Each human is slightly different in movement speed.
 
 ## Maps
 
 There are three maps for the player to choose: Farm, Town/City, and Forest.
-At this time, Farm is the most fleshed out.
 
 ## Characters
 
-The player can currently play only as a Duck.
+The player can  select between a duck and a rabbit to control
 
 The hostile charactes are Farmer girls
 
