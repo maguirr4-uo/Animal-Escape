@@ -1,5 +1,7 @@
 # Animal-Escape
 
+Playable at https://play.unity.com/mg/other/webgl-builds-186656
+
 ## Staff
 
 Jay Shin: Game Designer
