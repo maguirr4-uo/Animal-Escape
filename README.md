@@ -7,7 +7,9 @@ This is a simple prototype for a game designed as part of a Game Development cou
 ## Staff
 
 Jay Shin: Game Designer
+
 Elliot Terner: Asset Manager
+
 Max Aguirre: Product Owner
 
 ## Asset Credits
@@ -17,7 +19,9 @@ Characters and Animals: Suriyun - https://assetstore.unity.com/publishers/10786
 Music: Nobuo Uematsu - Square Enix
 
 Farm Map: SteakByte - https://assetstore.unity.com/packages/3d/environments/polygon-farm-pack-191359
+
 City Map: 255 Pixel Studios - https://assetstore.unity.com/packages/3d/environments/urban/city-package-107224
+
 Nature Map: Elcanetay - https://assetstore.unity.com/packages/3d/vegetation/low-poly-nature-free-vegetation-134006
 
 ## About the Game
